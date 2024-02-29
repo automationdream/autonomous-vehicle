@@ -1,0 +1,32 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "docker-run",
+            "label": "docker-run: debug",
+            "dependsOn": [
+                "docker-build"
+            ],
+            "dockerRun": {
+                "volumes": [
+                    {
+                        "localPath": "${workspaceFolder}/python/segmentation/dataset",
+                        "containerPath": "/app/python/segmentation/dataset"
+                    }
+                ]
+            },
+            "python": {
+                "file": "main.py"
+            }
+        },
+        {
+            "label": "docker-build",
+            "type": "docker-build",
+            "dockerBuild": {
+                "context": "${workspaceFolder}",
+                "dockerfile": "${workspaceFolder}/Dockerfile",
+                "tag": "coders-school/autonomous-vehicle",
+            }
+        }
+    ]
+}

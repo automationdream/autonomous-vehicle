@@ -1,0 +1,20 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Python code on Docker",
+            "type": "docker",
+            "request": "launch",
+            "preLaunchTask": "docker-run: debug",
+            "python": {
+                "pathMappings": [
+                    {
+                        "localRoot": "${workspaceFolder}/python/segmentation/main.py",
+                        "remoteRoot": "/app/python/segmentation/main.py"
+                    }
+                ],
+            },
+            "removeContainerAfterDebug": true
+        }
+    ]
+}
